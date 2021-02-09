@@ -17,6 +17,11 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
+    @GetMapping
+    public ResponseEntity<List<Appointment>> getAllAppointments(){
+        return ResponseEntity.ok(appointmentService.getAllAppointments());
+    }
+
     @PostMapping
     public ResponseEntity<List<Long>> getAppointmets(@RequestBody AppointmentDTO appointment){
         return ResponseEntity.ok(appointmentService.getAppointments(appointment.getId(), appointment.getDate()));
@@ -30,5 +35,10 @@ public class AppointmentController {
     @GetMapping("/{id}")
     public ResponseEntity<List<Appointment>> getAppointmentByPatientId(@PathVariable Long id){
         return ResponseEntity.ok(appointmentService.getAppointmentByPatientId(id));
+    }
+
+    @GetMapping("/tc/{tc}")
+    public ResponseEntity<List<Appointment>> getAppointmentByPatientTc(@PathVariable String tc){
+        return ResponseEntity.ok(appointmentService.getAppointmentByPatientTc(tc));
     }
 }

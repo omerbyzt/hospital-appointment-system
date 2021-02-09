@@ -28,4 +28,9 @@ public class PatientService {
         Optional<Patient> patient = patientRepository.findById(id);
         return patientMapper.toDTO(patient.get());
     }
+
+    public PatientDTO getPatientByTc(String tc){
+        Patient patient = patientRepository.findByTc(tc);
+        return patientMapper.toDTO(patient);
+    }
 }
