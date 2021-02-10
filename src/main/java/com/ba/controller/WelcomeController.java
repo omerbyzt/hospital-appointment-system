@@ -1,11 +1,15 @@
 package com.ba.controller;
 
+import com.ba.entity.Appointment;
 import com.ba.entity.AuthRequest;
 import com.ba.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -17,7 +21,7 @@ public class WelcomeController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @GetMapping("/")
+    @GetMapping("/welcome")
     public String welcome(){
         return "Welcome";
     }
